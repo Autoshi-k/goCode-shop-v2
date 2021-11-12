@@ -5,22 +5,25 @@ import { ProductsContext } from './context/ProductProvider';
 import Products from './Components/Products/Products';
 import Filters from './Components/Filters/Filters';
 import FliterIndex from './context/FilterIndex';
+import { CartContext } from './context/CartContext';
 
 function App() {
   const context = useContext(ProductsContext); 
-  console.log(context);
   const [filterIndex, setFilterIndex] = useState(0);
-  // console.log(setFilterIndex);
+  const [cart, setCart] = useState({});
+
   return (
-      <div className="App">
-        <Header />
-        <div className="main">
-          <FliterIndex.Provider value={ {filterIndex, setFilterIndex} }>
-            <Products />
-            <Filters categories={ context[0] }/>
-          </FliterIndex.Provider>
+      <CartContext.Provider value = { {cart, setCart} }>
+        <div className="App">
+          <Header />
+          <div className="main">
+            <FliterIndex.Provider value={ {filterIndex, setFilterIndex} }>
+              <Products />
+              <Filters categories={ context[0] }/>
+            </FliterIndex.Provider>
+          </div>
         </div>
-      </div>
+      </CartContext.Provider>
   );
 }
 
