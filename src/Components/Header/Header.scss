@@ -1,0 +1,37 @@
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  background-color: #535353;
+  border-bottom: 1em solid white;
+
+  .header-container {
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+  }
+
+  .shopping-bag-layers {
+    background-color: transparent;
+    height: 4em;
+    width: 4em;
+    border-radius: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .shop-bag {
+    cursor: pointer;
+  }
+
+  .shopping-bag-layers:hover {
+    // color: aqua;
+    background-color: #cf1b4e;
+  }
+}
+

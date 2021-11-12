@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import React, { useContext, useState } from 'react';
 import './App.css';
+import Header from './Components/Header/Header';
+import { ProductsContext } from './context/ProductProvider';
+import Products from './Components/Products/Products';
+import Filters from './Components/Filters/Filters';
+import FliterIndex from './context/FilterIndex';
 
 function App() {
+  const context = useContext(ProductsContext); 
+  console.log(context);
+  const [filterIndex, setFilterIndex] = useState(0);
+  // console.log(setFilterIndex);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <div className="App">
+        <Header />
+        <div className="main">
+          <FliterIndex.Provider value={ {filterIndex, setFilterIndex} }>
+            <Products />
+            <Filters categories={ context[0] }/>
+          </FliterIndex.Provider>
+        </div>
+      </div>
   );
 }
 
