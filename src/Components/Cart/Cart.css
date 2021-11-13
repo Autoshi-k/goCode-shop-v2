@@ -1,5 +1,32 @@
-.cart {
-  width: 500px;
-  background-color: yellowgreen;
+.cart .cart-title, .cart .cart-information {
+  padding: 0 1rem;
+  margin: 0;
+}
+
+.cart .cart-title {
+  font-size: 2em;
+  margin: .5em 0 .2em;
+}
+
+.cart .cart-information {
+  margin-bottom: 1em;
+}
+
+.cart .list-in-cart {
+  height: 80vh;
+  overflow-y: auto;
+}
+
+.cart .checkout-btn {
+  background-color: #cf1b4e;
+  width: 90%;
+  margin: 1.2em auto;
+  text-align: center;
+  padding: .5em .2em;
+  border-radius: .1em;
+  color: white;
+  font-weight: 600;
+  letter-spacing: .1em;
+  cursor: pointer;
 }
 /*# sourceMappingURL=Cart.css.map */
