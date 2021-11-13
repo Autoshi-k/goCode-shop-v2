@@ -2,7 +2,6 @@ import AddToCart from '../AddToCart/AddToCart';
 import './Product.css';
 
 function Product({ key, product }) {
-  // console.log(product.id);
   return (
     <div className="product">
       <img src={ product.image } alt={ product.title }/>

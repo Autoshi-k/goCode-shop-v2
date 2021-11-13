@@ -3,10 +3,14 @@
   width: 100%;
   text-align: center;
   padding: .5em 0;
-  border-radius: .5em;
+  border-radius: .1em;
   color: white;
   font-weight: 600;
   letter-spacing: .1em;
   cursor: pointer;
+}
+
+.add-to-cart:hover {
+  background-color: #750081;
 }
 /*# sourceMappingURL=AddToCart.css.map */

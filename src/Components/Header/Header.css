@@ -50,4 +50,11 @@
 .header .shopping-bag-layers:hover {
   background-color: #cf1b4e;
 }
+
+.header .drawer {
+  position: absolute;
+  top: 0;
+  width: 30vw;
+  background-color: white;
+}
 /*# sourceMappingURL=Header.css.map */

@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag, faCircle } from '@fortawesome/free-solid-svg-icons'
 import Drawer from '@mui/material/Drawer';
+// import { Drawer } from 'antd';
 
 
 // CSS
@@ -12,16 +13,20 @@ import Cart from "../Cart/Cart";
 function Header() {
 
   const [state, setState] = React.useState(false);
-
+  console.log('hellow');
   const toggleDrawer = (open) => (event) => {
     console.log('hi');
-    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
-    }
-    console.log(state);
-    // console.log(open);
+    console.log(open);
+    if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) return;
     setState(open);
-  };
+  }
+
+  // const showDrawer = () => setState(true);
+  // const onClose = () => setState(false);
+  //   console.log(state);
+  //   // console.log(open);
+  //   setState(open);
+  // };
 
 
   return (
@@ -30,15 +35,13 @@ function Header() {
         <h1>GoCode<span>Shop</span></h1>
         <div className="shopping-bag-layers" onClick={ toggleDrawer(true) }>
           <FontAwesomeIcon icon={ faShoppingBag } size="2x" className="shop-bag" />
-          <Drawer
-            anchor="right"
-            open={state}
-            onClose={ toggleDrawer(false) }
-          >
-            <Cart toggleDrawer={ toggleDrawer } />
-            <div>hello</div>
-          </Drawer>
-          </div>
+        </div>
+        <Drawer 
+          anchor="right" 
+          open={ state } 
+          onClose={ toggleDrawer(false) } >           
+          <Cart/>
+        </Drawer>
       
           {/* <FontAwesomeIcon icon={ faCircle } color="green" size="lg"/> */}
         </div>
