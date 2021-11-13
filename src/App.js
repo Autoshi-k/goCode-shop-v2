@@ -9,9 +9,10 @@ import { CartContext } from './context/CartContext';
 
 function App() {
   const context = useContext(ProductsContext); 
-  const [filterIndex, setFilterIndex] = useState(0);
+  const [filterIndex, setFilterIndex] = useState([[100, 160], 0]);
   const [cart, setCart] = useState({});
-
+  console.log(filterIndex);
+  console.log(filterIndex[0]);
   return (
       <CartContext.Provider value = { {cart, setCart} }>
         <div className="App">
