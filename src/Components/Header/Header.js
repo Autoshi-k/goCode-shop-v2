@@ -13,10 +13,7 @@ import Cart from "../Cart/Cart";
 function Header() {
 
   const [state, setState] = React.useState(false);
-  console.log('hellow');
   const toggleDrawer = (open) => (event) => {
-    console.log('hi');
-    console.log(open);
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) return;
     setState(open);
   }

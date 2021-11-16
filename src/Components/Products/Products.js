@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Product from "../Product/Product";
 import { ProductsContext } from "../../context/ProductProvider";
 import FliterIndex from "../../context/FilterIndex";
+import Divider from '@mui/material/Divider';
 
 // CSS
 import './Products.css';
@@ -21,9 +22,15 @@ function Products() {
   }
 
   return (
-    <div className="products">
-      { returnProductComponent() }
-    </div>);
+    <>
+      <div className="products">
+        <h2 className="products-filter-title">{ productsList.categories[filterIndex[1]] }</h2>
+        <Divider />
+        <div className="products-container">
+          { returnProductComponent() }
+        </div>
+      </div>
+    </>);
 }
 
 export default Products;

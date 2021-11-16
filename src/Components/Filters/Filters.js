@@ -9,7 +9,7 @@ import { FormHelperText } from "@mui/material";
 // CSS
 import './Filters.css';
 
-function Filters() {
+function Filters({ priceRange }) {
 
   // const [selectedIndex, setSelectedIndex] = useState(0);
   const { filterIndex, setFilterIndex } = useContext(FliterIndex);
@@ -25,7 +25,8 @@ function Filters() {
       value={ filterIndex[0] }
       onChange={ handleChange }
       valueLabelDisplay="auto"
-      max='1000'
+      min={ priceRange[0] }
+      max={ priceRange[1] }
       color="secondary"
       />
       <FormHelperText>Price range between ${ filterIndex[0][0] } and ${ filterIndex[0][1] }</FormHelperText>

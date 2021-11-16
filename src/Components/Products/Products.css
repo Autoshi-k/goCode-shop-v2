@@ -1,6 +1,16 @@
 .products {
   width: 80%;
-  background-color: white;
+}
+
+.products .products-filter-title {
+  text-align: center;
+  display: block;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+.products .products-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

@@ -153,8 +153,20 @@ const fakeData = [
 function ProductProvider({ children }) {
   const [products, setProducts] = useState(['']);
   const [categories, setCategories] = useState(['']);
-  
+  // const [priceRange, setPriceRange] = useState(['']);
+  // let prices = [];
+
+  // async function minmax() {
+  //   fakeData.map(product => prices.push(product.price));
+  //   console.log(prices);
+  //   setPriceRange([prices.Math.min, prices.Math.max]);
+  // } 
+
+
   function getData() {
+    // setProducts(fakeData);
+    // setCategories(['All', ...fakeData.map(singleProduct => singleProduct.category).filter((value, index, array) => array.indexOf(value) === index)]);
+
     fetch('https://fakestoreapi.com/products')
     .then(response => response.json())
     .then(data => { 
@@ -166,6 +178,7 @@ function ProductProvider({ children }) {
 
   useEffect(function() {
     getData();
+    // minmax();
   }, []);
   
   return <ProductsContext.Provider value={ { getData, products, categories } }>{ children }</ProductsContext.Provider>;
