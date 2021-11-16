@@ -17,7 +17,7 @@ function Cart() {
         <h4 className="cart-information">You Have { itemsAmount } Items In Cart</h4>
         <Divider />
         <div className="list-in-cart">
-          { Object.keys(cart.cart).map((index, key) => <InCart index={ index } key ={ key } amount={ cart.cart[index] }/>) }
+          { Object.keys(cart.cart).map((index, key) => cart.cart[index] > 0 && <InCart index={ index } key ={ key } amount={ cart.cart[index] }/>) }
         </div>
         <div className="checkout-btn">proceed to checkout</div>
       </div>
