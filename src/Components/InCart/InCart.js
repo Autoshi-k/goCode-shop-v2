@@ -24,7 +24,7 @@ function InCart({ index, key, amount }) {
             <h4>{ products.products[index - 1].title }</h4>
             <div className="in-cart-product-text">${ products.products[index - 1].price } x<span>{ amount }</span></div>
           </div>
-          <div onClick={ removeItem }>remove</div>
+          <div className="remove" onClick={ removeItem }>remove</div>
       </div>
       <Divider />
     </>

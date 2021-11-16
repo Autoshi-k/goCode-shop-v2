@@ -35,4 +35,8 @@
   position: relative;
   top: .5em;
 }
+
+.in-cart-product .remove {
+  cursor: pointer;
+}
 /*# sourceMappingURL=InCart.css.map */
