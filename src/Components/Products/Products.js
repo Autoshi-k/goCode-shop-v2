@@ -1,33 +1,34 @@
 import { useContext } from "react";
 import Product from "../Product/Product";
+// MUI
+import Divider from '@mui/material/Divider';
+// CONTEXT
 import { ProductsContext } from "../../context/ProductProvider";
 import FliterIndex from "../../context/FilterIndex";
-import Divider from '@mui/material/Divider';
-
 // CSS
 import './Products.css';
 
 function Products() {
-  const { filterIndex } = useContext(FliterIndex);
-  const productsList = useContext(ProductsContext);
+  const { filter } = useContext(FliterIndex);
+  const { products, categories } = useContext(ProductsContext);
 
-  const priceRange = filterIndex[0];
 
-  const checkRange = (product) => product.price >= priceRange[0] && product.price <= priceRange[1];
+  const checkRange = (product) => product.price >= filter.byCost[0] && product.price <= filter.byCost[1];
 
-  const returnProductComponent = () => {
-    if (!filterIndex[1]) {
-      return productsList.products.map(product => checkRange(product) && <Product key={ product.id } product={ product }/>)
-    } else return productsList.products.map(product => productsList.categories[filterIndex[1]] === product.category && checkRange(product) && <Product key={ product.id } product={ product }/>)
+  const filterProducts = (product) => {
+    if (!filter.byCategoryIndex && checkRange(product)) {
+      return true;
+    } else if (categories[filter.byCategoryIndex] === product.category && checkRange(product)) return true;
+    return false; 
   }
 
   return (
     <>
       <div className="products">
-        <h2 className="products-filter-title">{ productsList.categories[filterIndex[1]] }</h2>
+        <h2 className="products-filter-title">{ categories[filter.byCategoryIndex] }</h2>
         <Divider />
         <div className="products-container">
-          { returnProductComponent() }
+          { products.map(product => filterProducts(product) && <Product key={ product.id } product={ product }/>) }
         </div>
       </div>
     </>);

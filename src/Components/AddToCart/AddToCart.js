@@ -6,21 +6,31 @@ import './AddToCart.css';
 
 function AddToCart({ id }) {
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  // console.log(loading);
+
   const {cart, setCart} = useContext(CartContext);
-  const addToCart = () => {
+  function addToCart() {
     setLoading(true);
-    cart[id] ? setCart({...cart, [id]: cart[id] + 1}): setCart ({...cart, [id]: 1})
+    cart[id] ? setCart({...cart, [id]: cart[id] + 1}): setCart ({...cart, [id]: 1});
   }
-
+  
   useEffect(() => {
-    const timer = setTimeout(setLoading(false) , 1000);
-    return () => clearTimeout(timer); 
-  }, [cart]);
-
+    const interval = setTimeout(() => { 
+      if (loading) {
+        setLoading(false) 
+      }
+    } , 800);
+    return () => clearTimeout(interval);
+  }, [loading])
 
   return (
-    <div className="add-to-cart" onClick={ addToCart }>{ loading && <CircularProgress color="secondary" /> }Add To Cart</div>
+    <> 
+      { !loading ? 
+      <div className="add-to-cart" onClick={ addToCart }>Add To Cart</div>
+      : <div className="add-to-cart">{ loading && <CircularProgress color="secondary" /> }Adding</div>
+      }
+    </>
   );
 }
 

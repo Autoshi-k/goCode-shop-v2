@@ -8,28 +8,31 @@ import FliterIndex from './context/FilterIndex';
 import { CartContext } from './context/CartContext';
 
 function App() {
-  const context = useContext(ProductsContext); 
+  const {products} = useContext(ProductsContext); 
   // console.log(context); 
   const [priceRange, setPriceRange] = useState(['']);
-  
+  console.log(products);
   useEffect(() => {
     let prices = []; 
-    if (!context.products.lenght) {
-      context.products.map(product => prices.push(product.price));
+    console.log(products.length);
+    if (products.length) {
+      products.map(product => prices.push(product.price));
+      console.log(Math.min(...prices));
       setPriceRange([Math.min(...prices), Math.max(...prices)]);
     }
-}, [context.products]);
- 
-  const [filterIndex, setFilterIndex] = useState([[100, 160], 0]);
+}, [products]);
+ console.log(priceRange);
+  // const [filterIndex, setFilterIndex] = useState([[100, 160], 0]);
+  const [filter, setFilter] = useState({byCost: [100, 160], byCategoryIndex: 0});
   const [cart, setCart] = useState({});
   return (
       <CartContext.Provider value = { {cart, setCart} }>
         <div className="App">
           <Header />
           <div className="main">
-            <FliterIndex.Provider value={ {filterIndex, setFilterIndex} }>
+            <FliterIndex.Provider value={ {filter, setFilter} }>
               <Products />
-              <Filters categories={ context[0] } priceRange={ priceRange }/>
+              <Filters priceRange={ priceRange }/>
             </FliterIndex.Provider>
           </div>
         </div>
