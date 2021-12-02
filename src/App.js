@@ -1,42 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react';
-import './App.css';
-import Header from './Components/Header/Header';
-import { ProductsContext } from './context/ProductProvider';
-import Products from './Components/Products/Products';
-import Filters from './Components/Filters/Filters';
-import FliterIndex from './context/FilterIndex';
+import React, { useState } from 'react';
 import { CartContext } from './context/CartContext';
+import './App.css';
+import { Routes, Route } from 'react-router';
+import Home from './pages/Home/Home';
+import ProductPage from './pages/ProductPage/ProductPage';
+import Header from './Components/Header/Header';
 
 function App() {
-  const {products} = useContext(ProductsContext); 
-  // console.log(context); 
-  const [priceRange, setPriceRange] = useState(['']);
-  console.log(products);
-  useEffect(() => {
-    let prices = []; 
-    console.log(products.length);
-    if (products.length) {
-      products.map(product => prices.push(product.price));
-      console.log(Math.min(...prices));
-      setPriceRange([Math.min(...prices), Math.max(...prices)]);
-    }
-}, [products]);
- console.log(priceRange);
-  // const [filterIndex, setFilterIndex] = useState([[100, 160], 0]);
-  const [filter, setFilter] = useState({byCost: [100, 160], byCategoryIndex: 0});
   const [cart, setCart] = useState({});
+  
   return (
+    <div>
       <CartContext.Provider value = { {cart, setCart} }>
-        <div className="App">
-          <Header />
-          <div className="main">
-            <FliterIndex.Provider value={ {filter, setFilter} }>
-              <Products />
-              <Filters priceRange={ priceRange }/>
-            </FliterIndex.Provider>
-          </div>
-        </div>
+        <Header />
+        <Routes>
+          <Route path="/" element={ <Home /> } />
+          <Route path="/product/:id" element={ <ProductPage /> } />
+        </Routes>
       </CartContext.Provider>
+    </div>
   );
 }
 

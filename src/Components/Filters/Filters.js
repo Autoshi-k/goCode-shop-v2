@@ -11,10 +11,8 @@ import './Filters.css';
 
 function Filters({ priceRange }) {
 
-  // const [selectedIndex, setSelectedIndex] = useState(0);
   const { filter, setFilter } = useContext(FliterIndex);
   const categories = useContext(ProductsContext);
-  console.log(priceRange);
   const handleListItemClick = (event, index) => setFilter({...filter, byCategoryIndex: index});
   const handleChange = (event, newValue) => setFilter({...filter, byCost: newValue});
   return (
