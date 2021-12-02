@@ -6,23 +6,22 @@ import { ProductsContext } from "../../context/ProductProvider";
 // CSS
 import './InCart.css';
 
-function InCart({ index, key, amount }) {
+function InCart({ id, key, amount }) {
 
-  const products = useContext(ProductsContext);
+  const { products } = useContext(ProductsContext);
   const { cart, setCart } = useContext(CartContext);
-  console.log(cart);
-  console.log(setCart);
+  const product = products.find(element => element._id === id);
 
   const removeItem = () => {
-    setCart({...cart, [index]: cart[index] - 1});
+    setCart({...cart, [id]: cart[id] - 1});
   }
   return (
     <>
       <div className="in-cart-product">
-        <img src={ products.products[index - 1].image } alt={ products.products[index - 1].title }/>
+        <img src={ product.image } alt={ product.title }/>
           <div className="product-details">
-            <h4>{ products.products[index - 1].title }</h4>
-            <div className="in-cart-product-text">${ products.products[index - 1].price } x<span>{ amount }</span></div>
+            <h4>{ product.title }</h4>
+            <div className="in-cart-product-text">${ product.price } x<span>{ amount }</span></div>
           </div>
           <div className="remove" onClick={ removeItem }>remove</div>
       </div>

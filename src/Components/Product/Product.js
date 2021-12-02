@@ -11,7 +11,7 @@ function Product({ key, product }) {
         <h2>{ product.title }</h2>
         <p>${ product.price }</p>
       </Link>
-      <AddToCart id={ product.id }/>
+      <AddToCart id={ product._id }/>
     </div>
   );
 }

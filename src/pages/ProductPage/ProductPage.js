@@ -5,6 +5,7 @@ import { CardActionArea, CardContent, CardMedia } from "@mui/material";
 import Typography from '@mui/material/Typography';
 import AddToCart from "../../Components/AddToCart/AddToCart";
 import './ProductPage.css'
+import { Box } from "@mui/system";
 
 function ProductPage () {
   const { id } = useParams();
@@ -13,31 +14,36 @@ function ProductPage () {
   useEffect(() => {
     fetch(`/products/${id}`).then(prom => prom.json().then(data => setProduct(data))).catch(e => console.log(e));
   }, [id])
-  console.log(id);
-  console.log(product);
+  // console.log(id);
+  // console.log(product);
   return (
     
     <div className="product-page">
-      { product && <Card sx={{ maxWidth: 800 }}>
-        <CardActionArea>
-          <CardMedia
-            component="img"
-            // height="140"
-            image={product.image}
-            alt={product.title}
-          />
-            <CardContent>
+      { product && <Card sx={{ maxWidth: 1000, display: "flex", padding: "2em" }}>
+        <CardMedia
+          sx={{ objectFit: "scale-down" }}
+          component="img"
+          // height="500"
+          image={product.image}
+          alt={product.title}
+        />
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <CardContent sx={{ flex: "1 0 auto", width: 400 }}>
               <Typography gutterBottom variant="h5" component="div">
                 {product.title}
               </Typography>
               <Typography gutterBottom variant="body2" >
                 {product.title}
-                <br />
-                {product.price}
               </Typography>
-              {/* <AddToCart id={ product.id }/> */}
+              <Typography gutterBottom variant="h6" >
+                PRICE: ${product.price}
+              </Typography>
             </CardContent>
+        <CardActionArea>
+              <AddToCart id={ product._id }/>
         </CardActionArea>
+        </Box>
+
       </Card>}
     </div>
   );
