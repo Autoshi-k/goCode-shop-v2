@@ -18,7 +18,7 @@ function Home() {
       setPriceRange([Math.min(...prices), Math.max(...prices)]);
     }
 }, [products]);
-//  console.log(priceRange);
+  // console.log(priceRange);
   // const [filterIndex, setFilterIndex] = useState([[100, 160], 0]);
   const [filter, setFilter] = useState({byCost: [100, 160], byCategoryIndex: 0});
   return (

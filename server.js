@@ -64,6 +64,6 @@ mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retr
     console.log(err);
   } else {
     initData(); 
-    app.listen(8080);
+    app.listen(process.env.PORT || 8080);
   }
 });
