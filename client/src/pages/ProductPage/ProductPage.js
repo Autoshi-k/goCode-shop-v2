@@ -9,13 +9,11 @@ import { Box } from "@mui/system";
 
 function ProductPage () {
   const { id } = useParams();
-  // console.log(useParams());
   const [product, setProduct] = useState(null);
   useEffect(() => {
     fetch(`/products/${id}`).then(prom => prom.json().then(data => setProduct(data))).catch(e => console.log(e));
   }, [id])
-  // console.log(id);
-  // console.log(product);
+
   return (
     
     <div className="product-page">
