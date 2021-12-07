@@ -4,6 +4,7 @@ import product from "./models/product.js";
 // import fetch from "node-fetch";
 import {readFile} from 'fs/promises';
 import dotenv from 'dotenv';
+import path from 'path';
 
 dotenv.config();
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
@@ -14,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', async (req, res) => {
-  res.sendFile('\client\public\index');
+  res.sendFile(path.join(__dirname+'/index.html'));
 })
 
 app.get('/products', async (req, res) => {
