@@ -13,6 +13,10 @@ const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 const app = express();
 app.use(express.json());
 
+app.get('/', async (req, res) => {
+  res.render('client\public\index.html');
+})
+
 app.get('/products', async (req, res) => {
   const { term } = req.query;
   if (term) {
