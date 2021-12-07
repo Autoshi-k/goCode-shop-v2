@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', async (req, res) => {
-  res.render('index');
+  res.sendFile('\client\public\index');
 })
 
 app.get('/products', async (req, res) => {
