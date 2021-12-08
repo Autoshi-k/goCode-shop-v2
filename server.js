@@ -13,12 +13,11 @@ const { DB_USER, DB_PASS, DB_HOST, DB_NAME } = process.env;
 
 const app = express();
 app.use(express.json());
+app.use(express.static('client/build'));
 
-app.get('/', async (req, res) => {
-  res.sendFile(path.join(__dirname+'client'+'public'));
-})
 
-app.get('/products', async (req, res) => {
+
+app.get('/api/products', async (req, res) => {
   const { term } = req.query;
   if (term) {
     console.log(term);
@@ -26,19 +25,19 @@ app.get('/products', async (req, res) => {
   } else res.send(await product.find());  
 });
 
-app.post('/products', async (req, res) => {
+app.post('/api/products', async (req, res) => {
   const { title, price, category, image } = req.body;
   const data = new product({ title, price, category, image });
   await data.save();
   res.send(data);
 })
 
-app.get('/products/:id', async (req, res) => {
+app.get('/api/products/:id', async (req, res) => {
   const { id } = req.params;
   res.send(await product.findById(id));
 })
 
-app.put('/products/:id', async (req, res) => {
+app.put('/api/products/:id', async (req, res) => {
   const { id } = req.params;
   const body = req.body;
   let updatedProduct = await product.findById(id);
@@ -49,7 +48,7 @@ app.put('/products/:id', async (req, res) => {
   res.send({ msg: 'product\'s updated' });
 })
 
-app.delete('/products/:id', async (req, res) => {
+app.delete('/api/products/:id', async (req, res) => {
   const { id } = req.params;
   await product.findByIdAndRemove(id);
   res.send(await product.find());
@@ -63,6 +62,10 @@ async function initData () {
     await product.insertMany(updatedData);
   } 
 }
+
+app.get(`*`, async (req, res) => {
+  res.sendFile(__dirname + 'client/public/index.html');
+})
 
 mongoose.connect(`mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority`, err => {
   if (err) {

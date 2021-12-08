@@ -11,7 +11,7 @@ function ProductPage () {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   useEffect(() => {
-    fetch(`/products/${id}`).then(prom => prom.json().then(data => setProduct(data))).catch(e => console.log(e));
+    fetch(`/api/products/${id}`).then(prom => prom.json().then(data => setProduct(data))).catch(e => console.log(e));
   }, [id])
 
   return (

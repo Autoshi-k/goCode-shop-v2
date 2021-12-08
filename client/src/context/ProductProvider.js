@@ -7,7 +7,7 @@ function ProductProvider({ children }) {
   const [categories, setCategories] = useState(['']);
 
   function getData() {
-    fetch('/products')
+    fetch('/api/products')
     .then(response => response.json())
     .then(data => { 
       setProducts(data);
