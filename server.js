@@ -15,7 +15,7 @@ const app = express();
 app.use(express.json());
 
 app.get('/', async (req, res) => {
-  res.sendFile(path.join(__dirname+'/index.html'));
+  res.sendFile(path.join(__dirname+'client'+'public'));
 })
 
 app.get('/products', async (req, res) => {
