@@ -18,6 +18,7 @@ function Home() {
   const {products} = useContext(ProductsContext); 
   const [priceRange, setPriceRange] = useState(['']);
 
+  // true if react to breakpoint
   const matches = useMediaQuery(useTheme().breakpoints.up('sm'));
 
   useEffect(() => {
@@ -33,12 +34,18 @@ function Home() {
   return (
         <div className="App">
           <div className="main">
-            <Grid container spacing={2} columns={{ xs: 4, md: 12 }}>
+            <Grid 
+              container 
+              spacing={2} 
+              columns={{ xs: 4, md: 12 }}
+              justifyContent="center"
+              direction={ matches ? "row" : "row-reverse" }
+            >
               <FliterIndex.Provider value={ {filter, setFilter} }>
-                <Grid item md={10} xs={4} >
+                <Grid item md={11} xs={4} >
                   <Products />
                 </Grid>
-                <Grid item md={2} sx={4} >
+                <Grid item md={1} sx={4} >
                   <Filters priceRange={ priceRange }/>
                 </Grid>
               </FliterIndex.Provider>
