@@ -1,8 +1,24 @@
 .filters {
-  position: sticky;
-  top: 9em;
-  width: 21em;
+  position: fixed;
+  // top: 9em;
+  right: 5.5em;
+  min-width: 300px;
+  width: 15vw;
   // background-color: yellowgreen;
-  height: 70vh;
-  margin-left: 1em;
+  // height: 70vh;
+  // margin-left: 1em;
+}
+
+@media (max-width: 1414px) {
+  .filters {
+    display: flex;
+    flex-direction: column;
+    padding: 0 3em;
+    height: 11em;
+    right: unset;
+    position: unset;
+    top: 6em;
+    // background-color: aqua;
+    justify-content: space-between;
+  }
 }

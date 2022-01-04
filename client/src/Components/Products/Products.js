@@ -7,6 +7,7 @@ import { ProductsContext } from "../../context/ProductProvider";
 import FliterIndex from "../../context/FilterIndex";
 // CSS
 import './Products.css';
+import { Grid } from "@mui/material";
 
 function Products() {
   const { filter } = useContext(FliterIndex);
@@ -28,7 +29,9 @@ function Products() {
         <h2 className="products-filter-title">{ categories[filter.byCategoryIndex] }</h2>
         <Divider />
         <div className="products-container">
-          { products.map(product => filterProducts(product) && <Product key={ product.id } product={ product }/>) }
+          <Grid container spacing={2} columns={{ xs: 4, sm: 9, md: 16 }}>
+            { products.map(product => filterProducts(product) && <Grid item sx={2} sm={4} md={4} ><Product key={ product.id } product={ product }/></Grid>) }
+          </Grid>
         </div>
       </div>
     </>);
