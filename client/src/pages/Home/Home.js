@@ -1,15 +1,24 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Home.css';
-import Header from '../../Components/Header/Header';
 import { ProductsContext } from '../../context/ProductProvider';
+
+// Components
 import Products from '../../Components/Products/Products';
 import Filters from '../../Components/Filters/Filters';
 import FliterIndex from '../../context/FilterIndex';
+
+// MUI
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { Grid } from '@mui/material';
+
 
 
 function Home() {
   const {products} = useContext(ProductsContext); 
   const [priceRange, setPriceRange] = useState(['']);
+
+  const matches = useMediaQuery(useTheme().breakpoints.up('sm'));
 
   useEffect(() => {
     let prices = []; 
@@ -24,10 +33,16 @@ function Home() {
   return (
         <div className="App">
           <div className="main">
-            <FliterIndex.Provider value={ {filter, setFilter} }>
-              <Products />
-              <Filters priceRange={ priceRange }/>
-            </FliterIndex.Provider>
+            <Grid container spacing={2} columns={{ xs: 4, md: 12 }}>
+              <FliterIndex.Provider value={ {filter, setFilter} }>
+                <Grid item md={10} xs={4} >
+                  <Products />
+                </Grid>
+                <Grid item md={2} sx={4} >
+                  <Filters priceRange={ priceRange }/>
+                </Grid>
+              </FliterIndex.Provider>
+            </Grid>
           </div>
         </div>
   );
