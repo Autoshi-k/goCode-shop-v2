@@ -8,6 +8,8 @@ import Products from '../../Components/Products/Products';
 import Filters from '../../Components/Filters/Filters';
 import FliterIndex from '../../context/FilterIndex';
 
+import './Home.css';
+
 function Home() {
   const {products} = useContext(ProductsContext); 
   const [priceRange, setPriceRange] = useState(['']);

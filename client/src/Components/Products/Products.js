@@ -32,7 +32,6 @@ function Products() {
         <Divider />
         <div className="products-container">
           <Grid container   
-            justifyContent="center"
             spacing={2}  
             columns={{ xs: 4, sm: 9, md: 16 }}
           >
