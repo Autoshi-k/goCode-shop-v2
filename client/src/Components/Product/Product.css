@@ -22,6 +22,11 @@
   width: 100%;
 }
 
+.product h2, .product p {
+  color: gray;
+  text-decoration: none;
+}
+
 .product h2 {
   font-size: 1rem;
   display: -webkit-box;

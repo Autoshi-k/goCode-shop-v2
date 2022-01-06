@@ -10,9 +10,14 @@
   align-items: center;
   justify-content: space-between;
   text-align: left;
-
+  
   img {
     width: 100%;
+  }
+  
+  h2, p {
+    color: gray;
+    text-decoration: none;
   }
 
   h2 {

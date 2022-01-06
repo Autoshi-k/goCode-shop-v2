@@ -8,6 +8,7 @@ import Drawer from '@mui/material/Drawer';
 // CSS
 import './Header.css';
 import Cart from "../Cart/Cart";
+import { Link } from "react-router-dom";
 
 
 function Header() {
@@ -29,7 +30,7 @@ function Header() {
   return (
     <div className="header">
       <div className="header-container">
-        <h1>GoCode<span>Shop</span></h1>
+        <Link style={{ color: 'inherit', textDecoration: 'inherit'}} to="/"><h1>GoCode<span>Shop</span></h1></Link>
         <div className="shopping-bag-layers" onClick={ toggleDrawer(true) }>
           <FontAwesomeIcon icon={ faShoppingBag } size="2x" className="shop-bag" />
         </div>
