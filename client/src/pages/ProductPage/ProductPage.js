@@ -10,6 +10,8 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, CardContent, CardMedia } from "@mui/material";
 import { Box } from "@mui/system";
 
+import './ProductPage.css';
+
 function ProductPage () {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
@@ -20,7 +22,31 @@ function ProductPage () {
   return (
     
     <div className="product-page">
-      { product && <Card sx={{ maxWidth: 1000, display: "flex", padding: "2em" }}>
+      { product && <>
+      <div className="product-page-card">
+      <CardMedia
+          sx={{ objectFit: "scale-down" }}
+          component="img"
+          height="500"
+          image={product.image}
+          alt={product.title}
+        />
+        <div className="product-page-informations">
+          <div className="product-card-informations">
+            <Typography gutterBottom variant="h5" component="div">
+              {product.title}
+            </Typography>
+            <Typography gutterBottom variant="body2" >
+              {product.title}
+            </Typography>
+            <Typography gutterBottom variant="h6" >
+              PRICE: ${product.price}
+            </Typography>
+          </div>
+        <AddToCart id={ product._id }/>
+        </div>
+      </div>
+      {/* <Card sx={{ maxWidth: 1000, display: "flex", padding: "2em" }}>
         <CardMedia
           sx={{ objectFit: "scale-down" }}
           component="img"
@@ -29,7 +55,7 @@ function ProductPage () {
           alt={product.title}
         />
         <Box sx={{ display: "flex", flexDirection: "column" }}>
-            <CardContent sx={{ flex: "1 0 auto", width: 400 }}>
+            <CardContent sx={{ flex: "1 0 auto", maxWidth: 400 }}>
               <Typography gutterBottom variant="h5" component="div">
                 {product.title}
               </Typography>
@@ -40,12 +66,13 @@ function ProductPage () {
                 PRICE: ${product.price}
               </Typography>
             </CardContent>
-        <CardActionArea>
               <AddToCart id={ product._id }/>
+        <CardActionArea>
         </CardActionArea>
         </Box>
 
-      </Card>}
+      </Card> */}
+      </>}
     </div>
   );
 }

@@ -14,3 +14,10 @@
 .add-to-cart:hover {
   background-color: #750081;
 }
+
+.product-page .add-to-cart {
+  justify-self: flex-end;
+  position: absolute;
+  bottom: 0;
+  background-color: cadetblue;
+}
