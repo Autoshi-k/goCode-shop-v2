@@ -2,14 +2,11 @@ import React from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingBag, faCircle } from '@fortawesome/free-solid-svg-icons'
 import Drawer from '@mui/material/Drawer';
-// import { Drawer } from 'antd';
-
 
 // CSS
 import './Header.css';
 import Cart from "../Cart/Cart";
 import { Link } from "react-router-dom";
-
 
 function Header() {
 
@@ -18,14 +15,6 @@ function Header() {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) return;
     setState(open);
   }
-
-  // const showDrawer = () => setState(true);
-  // const onClose = () => setState(false);
-  //   console.log(state);
-  //   // console.log(open);
-  //   setState(open);
-  // };
-
 
   return (
     <div className="header">
@@ -41,10 +30,8 @@ function Header() {
           <Cart/>
         </Drawer>
       
-          {/* <FontAwesomeIcon icon={ faCircle } color="green" size="lg"/> */}
         </div>
       </div>
-    // </div>
   )
 }
 
