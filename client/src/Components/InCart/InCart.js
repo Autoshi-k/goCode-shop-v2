@@ -1,10 +1,11 @@
-import Divider from '@mui/material/Divider';
 import React, { useContext } from "react";
+
+// Context
 import { CartContext } from '../../context/CartContext';
 import { ProductsContext } from "../../context/ProductProvider";
 
-// CSS
-import './InCart.css';
+// MUI
+import Divider from '@mui/material/Divider';
 
 function InCart({ id, key, amount }) {
 

@@ -1,12 +1,14 @@
 import { useContext } from "react";
+
+// Componetns
 import Product from "../Product/Product";
-// MUI
-import Divider from '@mui/material/Divider';
-// CONTEXT
+
+// Context
 import { ProductsContext } from "../../context/ProductProvider";
 import FliterIndex from "../../context/FilterIndex";
-// CSS
-import './Products.css';
+
+// MUI
+import Divider from '@mui/material/Divider';
 import { Grid } from "@mui/material";
 
 function Products() {
@@ -29,7 +31,11 @@ function Products() {
         <h2 className="products-filter-title">{ categories[filter.byCategoryIndex] }</h2>
         <Divider />
         <div className="products-container">
-          <Grid container spacing={2} columns={{ xs: 4, sm: 9, md: 16 }}>
+          <Grid container   
+            justifyContent="center"
+            spacing={2}  
+            columns={{ xs: 4, sm: 9, md: 16 }}
+          >
             { products.map(product => filterProducts(product) && <Grid item sx={2} sm={4} md={4} ><Product key={ product.id } product={ product }/></Grid>) }
           </Grid>
         </div>

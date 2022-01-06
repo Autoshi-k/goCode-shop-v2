@@ -18,7 +18,6 @@ function ProductProvider({ children }) {
 
   useEffect(function() {
     getData();
-    // minmax();
   }, []);
   
   return <ProductsContext.Provider value={ { getData, products, categories } }>{ children }</ProductsContext.Provider>;

@@ -1,18 +1,22 @@
 import React, { useContext } from 'react';
-import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
+
+// Context
 import { CartContext } from '../../context/CartContext';
+
+// Components
 import InCart from '../InCart/InCart';
 
-import './Cart.css';
+// MUI
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
 
 function Cart() {
-
+  
   const cart = useContext(CartContext);
   const itemsAmount = Object.keys(cart.cart).length ? Object.keys(cart.cart).reduce((pre, key) => pre + cart.cart[key], 0) : 0;
   return (
     <List>
-      <div className="cart" style={{width: 500}}>
+      <div className="cart" style={{width: '80vw', maxWidth: '500px'}}>
         <h2 className="cart-title">Cart</h2>
         <h4 className="cart-information">You Have { itemsAmount } Items In Cart</h4>
         <Divider />

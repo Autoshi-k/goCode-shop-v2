@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
-import './Home.css';
+
+// Context
 import { ProductsContext } from '../../context/ProductProvider';
 
 // Components
@@ -7,22 +8,9 @@ import Products from '../../Components/Products/Products';
 import Filters from '../../Components/Filters/Filters';
 import FliterIndex from '../../context/FilterIndex';
 
-// MUI
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import { Grid } from '@mui/material';
-
-
-
 function Home() {
   const {products} = useContext(ProductsContext); 
   const [priceRange, setPriceRange] = useState(['']);
-
-  // true if react to breakpoint
-  // const matches = useMediaQuery('(min-width:1414px)');
-  const theme = useTheme();
-  const matches = useMediaQuery(theme.breakpoints.up('sm'));
-  console.log(matches);
 
   useEffect(() => {
     let prices = []; 

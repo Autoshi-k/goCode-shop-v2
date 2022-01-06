@@ -1,26 +1,34 @@
-import { FormControl, InputLabel, List, ListItem, MenuItem, OutlinedInput, Select, Slider, useMediaQuery } from "@mui/material";
-import { ListItemButton } from "@mui/material";
-import { ListItemText } from "@mui/material";
 import React, { useContext } from "react";
+
+// Context
 import FliterIndex from "../../context/FilterIndex";
 import { ProductsContext } from '../../context/ProductProvider';
-import { FormHelperText } from "@mui/material";
 
-// CSS
-import './Filters.css';
+// MUI
+import { FormControl, InputLabel, List, ListItem, MenuItem, Select, Slider, useMediaQuery } from "@mui/material";
+import { ListItemButton, ListItemText, FormHelperText } from "@mui/material";
 import { Box } from "@mui/system";
 
 function Filters({ priceRange }) {
 
   const matches = useMediaQuery('(min-width:1414px)');
 
-  
   const { filter, setFilter } = useContext(FliterIndex);
   const categories = useContext(ProductsContext);
+
+  // getting the wanted category from list
   const handleListItemClick = (event, index) => setFilter({...filter, byCategoryIndex: index});
-  const handleSelectClick = event => setFilter({...filter, byCaterogyIndex: event.target.value});
+
+  // getting the wanted category from select
+  // need to change it to index
+  const handleSelectClick = (wantedCategory) => {
+    const categoryIndex = categories.categories.indexOf(wantedCategory);
+    // if nothing is selected categoryIndex = -1
+    if (categoryIndex !== -1) setFilter({...filter, byCategoryIndex: categoryIndex});
+  }
+
+  // change slider values (filter price)
   const handleChange = (event, newValue) => setFilter({...filter, byCost: newValue});
-  console.log(categories.categories[filter.byCategoryIndex]);
   return (
     <div className="filters">
       <div>
@@ -38,6 +46,7 @@ function Filters({ priceRange }) {
       </div>
 
       { 
+        // choose the right fliter method depends window width
         matches ?
         <div>
         <List component="nav" aria-label="main mailbox folders">
@@ -63,8 +72,7 @@ function Filters({ priceRange }) {
               id="demo-simple-select"
               value={ categories.categories[filter.byCategoryIndex] }
               label="Category"
-              // onChange={ (event) => handleListItemClick(event, index) }
-              onClick={event => setFilter({...filter, byCaterogyIndex: event.target.value})}
+              onClick={(event) => handleSelectClick(event.target.getAttribute('data-value'))}
             >
               { categories.categories.map((category, index) => {
                 return (
@@ -74,12 +82,9 @@ function Filters({ priceRange }) {
             </Select>
           </FormControl>
         </Box>
-        </div>
+      </div>
       }
 
-      
-
-      
     </div>
   );
 }

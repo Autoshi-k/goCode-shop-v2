@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from 'react';
-import CircularProgress from '@mui/material/CircularProgress';
 
+// Context
 import { CartContext } from '../../context/CartContext';
-import './AddToCart.css';
+
+// MUI
+import CircularProgress from '@mui/material/CircularProgress';
 
 function AddToCart({ id }) {
 
   const [loading, setLoading] = useState(false);
-  // console.log(loading);
 
   const {cart, setCart} = useContext(CartContext);
   function addToCart() {

@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import Card from '@mui/material/Card';
-import { CardActionArea, CardContent, CardMedia } from "@mui/material";
-import Typography from '@mui/material/Typography';
+
+// Components
 import AddToCart from "../../Components/AddToCart/AddToCart";
-import './ProductPage.css'
+
+// MUI
+import Card from '@mui/material/Card';
+import Typography from '@mui/material/Typography';
+import { CardActionArea, CardContent, CardMedia } from "@mui/material";
 import { Box } from "@mui/system";
 
 function ProductPage () {
